@@ -18,7 +18,8 @@ class LoanRequest(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='loan_requests')
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     status = models.CharField(choices=RequestStatus.choices, default=RequestStatus.PENDING , max_length=10)
-    term_months = models.IntegerField()
+    term = models.ForeignKey(to='core.LoanTerm', on_delete=models.CASCADE, related_name='loan_requests', null=True, blank=True)
+    loan_type = models.ForeignKey(to='core.LoanType', on_delete=models.CASCADE, related_name='loan_requests')
     
     
     def __str__(self):
