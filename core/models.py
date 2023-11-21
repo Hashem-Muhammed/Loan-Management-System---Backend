@@ -2,31 +2,14 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from providers.models import Provider
 from customers.models import Customer
+from bank_personnel.models import LoanFund
 
 
-class LoanFund(models.Model):
-    name = models.CharField(max_length=255)
-    max_amount = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
-    min_amount = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
-    interest_rate = models.FloatField(null=True, blank=True, validators=[
-            MinValueValidator(0.0),
-            MaxValueValidator(100.0), 
-        ] )
-    number_of_months =models.IntegerField()
-    
-    
-    def __str__(self):
-        return self.name
+
     
     
 
-class Fund(models.Model):
-    amount = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
-    provider = models.ForeignKey(Provider, null=True , blank=True , on_delete=models.CASCADE)
-    loan_fund = models.ForeignKey(LoanFund, on_delete=models.CASCADE, related_name='funds')
-    
-    def __str__(self):
-        return f'{self.amount}'
+
     
 
 class LoanTerm(models.Model):
