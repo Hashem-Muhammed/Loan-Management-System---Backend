@@ -10,4 +10,6 @@ class CustomerService:
         return self.term in self.loan_type.loan_terms.all()
 
     def validate_amount(self):
-        return self.amount >= self.loan_type.min_amount and self.amount <= self.loan_type.max_amount
+        return self.amount >= self.loan_type.min_amount and self.amount <= self.loan_type.max_amount 
+    
+

@@ -4,5 +4,5 @@ from .models import *
 
 admin.site.register(Loan)
 admin.site.register(LoanTerm)
-
+admin.site.register(AmortizationEntry)
  

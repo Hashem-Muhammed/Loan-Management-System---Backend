@@ -31,3 +31,10 @@ class LoanType(models.Model):
     min_amount = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
     loan_terms = models.ManyToManyField(to='core.LoanTerm')
     loan_fund = models.ForeignKey(LoanFund, on_delete=models.CASCADE, related_name='loan_types')
+    interest_rate = models.DecimalField(validators=[
+            MinValueValidator(0.0),
+            MaxValueValidator(100.0), 
+        ], max_digits=8, decimal_places=2)
+    
+    def __str__(self):
+        return self.name

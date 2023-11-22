@@ -132,3 +132,12 @@ REST_FRAMEWORK = {
 		'rest_framework_simplejwt.authentication.JWTAuthentication', 
 	], 
 } 
+from datetime import  timedelta 
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_BEAT_SCHEDULE = {
+    'process_pending_loan_requests': {
+        'task': 'core.tasks.process_pending_loan_requests',
+        'schedule': timedelta(minutes=1), 
+    },
+}
