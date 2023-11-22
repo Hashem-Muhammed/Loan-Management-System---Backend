@@ -8,3 +8,9 @@ class LoanFundSerializer(serializers.ModelSerializer):
         model = LoanFund
         fields = '__all__'
         
+class LoanTypeSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = LoanType
+        fields = '__all__'
+        

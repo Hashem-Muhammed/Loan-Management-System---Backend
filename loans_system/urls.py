@@ -27,6 +27,7 @@ urlpatterns = [
         "api/token/refresh/", jwt_views.TokenRefreshView.as_view(), name="token_refresh"
     ),
     path("api/providers/",include("providers.urls")),
-    path("api/bank-personnel/",include("bank_personnel.urls"))
+    path("api/bank-personnel/",include("bank_personnel.urls")),
+    path("api/customers/",include("customers.urls"))
     
 ]

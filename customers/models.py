@@ -15,11 +15,11 @@ class Customer(models.Model):
         return self.user.username
 
 class LoanRequest(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='loan_requests')
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='loan_requests', null=True, blank=True)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     status = models.CharField(choices=RequestStatus.choices, default=RequestStatus.PENDING , max_length=10)
-    term = models.ForeignKey(to='core.LoanTerm', on_delete=models.CASCADE, related_name='loan_requests', null=True, blank=True)
-    loan_type = models.ForeignKey(to='core.LoanType', on_delete=models.CASCADE, related_name='loan_requests')
+    term = models.ForeignKey(to='core.LoanTerm', on_delete=models.CASCADE, related_name='loan_requests')
+    loan_type = models.ForeignKey(to='bank_personnel.LoanType', on_delete=models.CASCADE, related_name='loan_requests')
     
     
     def __str__(self):

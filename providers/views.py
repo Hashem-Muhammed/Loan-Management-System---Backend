@@ -5,12 +5,11 @@ from .permissions import IsProvider
 from rest_framework.generics import CreateAPIView
 from .models import *
 from .serializers import *
-from .services import *
 
 
 class CreateFundAPIView(CreateAPIView):
     queryset = Fund.objects.all()
-    serializer_class = GenericFundSerializer
+    serializer_class = PostFundSerializer
     permission_classes = [IsAuthenticated, IsProvider]
 
     def perform_create(self, serializer):

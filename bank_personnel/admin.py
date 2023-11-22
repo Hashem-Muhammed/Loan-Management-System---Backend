@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(BankPersonnel)
 admin.site.register(LoanFund)
+admin.site.register(LoanType)
