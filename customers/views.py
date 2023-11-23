@@ -10,7 +10,6 @@ from .services import *
 from core.models import AmortizationEntry
 from core.serializers import AmortizationEntrySerializer
 from core.services import *
-from core.tasks import process_pending_loan_requests
 
 
 class CreateLoanRequestAPI(CreateAPIView):
@@ -22,6 +21,7 @@ class CreateLoanRequestAPI(CreateAPIView):
         serializer.save(customer=Customer.objects.get(user=self.request.user))
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticated, IsCustomer])
 def get_amortized_table_by_loan_id(request):
     loan_id = request.query_params.get('loan_id', None) 
     if not loan_id:
