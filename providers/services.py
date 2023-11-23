@@ -7,4 +7,4 @@ class FundService:
         self.min_amount = self.loan_fund.min_amount
 
     def validate_fund_amount(self):
-        return self.amount < self.max_amount and self.amount > self.min_amount
+        return self.amount <= self.max_amount and self.amount >= self.min_amount

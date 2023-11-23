@@ -11,10 +11,10 @@ class Helper:
     @staticmethod
     def create_bank_personnel():
         user = User.objects.create(
-            username="customer",
-            email="customer@example.com",
+            username="personnel",
+            email="personnel@example.com",
             password="hashem1234",
-            first_name="customer",
+            first_name="personnel",
         )
         bank_personnel = BankPersonnel.objects.create(user=user)
         return user, bank_personnel
